@@ -1,6 +1,7 @@
 import pytest
-
+import allure
 # PATH = C:\Users\eldar.burkhanov\PycharmProjects\reqres_autotesting\test_api_reqres\allure_result
+# PATH = C:\Users\1\git\reqres_api_test\venv\test_api_reqres\allure_dir
 
 """Hook for add custom marks"""
 def pytest_configure(config):
@@ -9,6 +10,7 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "post_method: mark a test as a POST method test")
     config.addinivalue_line("markers", "put_method: mark a test as a PUT method test")
     config.addinivalue_line("markers", "patch_method: mark a test as a PATCH method test")
+
 
 @pytest.fixture
 def post_data():
@@ -61,3 +63,16 @@ def post_login_invalid_data():
     }
     return data
 
+
+@pytest.fixture
+def post_login_invalid_data_only_pass():
+    data = {
+    "password": "cityslicka"
+    }
+    return data
+
+
+@pytest.fixture()
+def get_url():
+    url = "https://reqres.in"
+    return url
